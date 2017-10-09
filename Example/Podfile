@@ -1,0 +1,34 @@
+use_frameworks!
+
+source 'https://github.com/iOSModularization/AHFMSpecs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+
+
+target 'AHFMSearchVC_Example' do
+  pod 'AHFMSearchVC', :path => '../'
+
+  pod 'AHServiceRouter'
+  pod 'AHFMServices'
+  pod 'AHFMModuleManager'
+  
+  pod 'AHFMKeywordVC'
+  pod 'AHFMKeywordVCServices'
+  pod 'AHFMKeywordVCManager'
+  
+  pod 'AHFMBottomPlayer'
+  pod 'AHFMBottomPlayerServices'
+  pod 'AHFMBottomPlayerManager'
+  
+  pod 'AHFMSearchVCServices'
+  pod 'AHFMSearchVCManager'
+  
+  pod 'AHFMNetworking'
+  
+
+
+  target 'AHFMSearchVC_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
