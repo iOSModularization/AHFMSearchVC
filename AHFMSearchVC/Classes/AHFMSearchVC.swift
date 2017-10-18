@@ -215,6 +215,8 @@ extension AHFMSearchVC: UICollectionViewDelegateFlowLayout, UICollectionViewData
                 let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderReuseID, for: indexPath) as! AHFMSectionSupplementaryCell
                 if let count = self.hotTerms?.count, count > 0 {
                     header.titleLabel.text = "Hot🔥"
+                    header.hideClearBtn = true
+                    header.delegate = nil
                 }else{
                     header.titleLabel.text = ""
                 }
@@ -232,7 +234,7 @@ extension AHFMSearchVC: UICollectionViewDelegateFlowLayout, UICollectionViewData
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var term: String?
-
+        
         if indexPath.section == RecentTermSectionNumber {
             guard let recentTerms = self.recentTerms else {
                 return
@@ -282,7 +284,7 @@ extension AHFMSearchVC: UISearchBarDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.manager?.searchVC(self, didSelectKeyword: term, searchResultsController: self.resultVC)
         }
-
+        
     }
     
 }
@@ -296,7 +298,7 @@ extension AHFMSearchVC: UISearchResultsUpdating {
     }
 }
 
-//MARK:- Setu[ UI
+//MARK:- Setup UI
 extension AHFMSearchVC {
     func setupResultVC() {
         var resultVC: UIViewController?
